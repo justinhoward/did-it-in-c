@@ -23,12 +23,12 @@ all: $(TARGETFILE)
 # Link
 $(TARGETFILE): $(OBJECTS)
 	@mkdir -p $(dir $@)
-	$(CC) $< -o $@
+	$(CC) $^ -o $@
 
 # Compile
-$(OBJECTS): $(SOURCES)
+$(OBJDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 # Remove all generated files
 clean:
