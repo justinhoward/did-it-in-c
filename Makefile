@@ -1,5 +1,5 @@
 # Target binary
-TARGET=hello
+TARGET=run
 
 # Files and directories
 BINDIR=bin
