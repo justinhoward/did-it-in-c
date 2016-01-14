@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "looping.h"
-
-#define ARRAY_SIZE(array) (sizeof(nums) / sizeof(nums[0]))
+#include "macros.h"
 
 void looping() {
   int nums[] = {1, 1, 2, 3, 5, 8};

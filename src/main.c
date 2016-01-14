@@ -1,5 +1,5 @@
-#include "hello_world/hello_world.h"
-#include "looping/looping.h"
+#include "hello_world.h"
+#include "looping.h"
 
 int main()
 {

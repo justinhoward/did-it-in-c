@@ -1,16 +1,18 @@
 # Target binary
 TARGET=hello
 
-# Compiler and linker
-CC=gcc
-CFLAGS=-Wall -Wextra -Werror
-
 # Files and directories
 BINDIR=bin
 SRCDIR=src
+INCDIR=include
 OBJDIR=obj
 OBJEXT=o
 SRCEXT=c
+
+# Compiler and linker
+CC=gcc
+CFLAGS=-Wall -Wextra -Werror
+INC=-iquote $(INCDIR)
 
 # Computed values
 TARGETFILE=$(BINDIR)/$(TARGET)
@@ -28,7 +30,7 @@ $(TARGETFILE): $(OBJECTS)
 # Compile
 $(OBJDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT)
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
 # Remove all generated files
 clean:
