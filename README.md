@@ -15,3 +15,4 @@ this will serve as a record of all my mistakes and progress.
 
 - How to write a simple Makefile
 - How to organize header files
+- Array sizing and size\_t
