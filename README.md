@@ -14,3 +14,4 @@ this will serve as a record of all my mistakes and progress.
 ## Things I Learned
 
 - How to write a simple Makefile
+- How to organize header files
