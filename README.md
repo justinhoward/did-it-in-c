@@ -10,9 +10,15 @@ this will serve as a record of all my mistakes and progress.
 ## Implementations
 
 - Hello World
+- Looping through an array
+- Resizable array struct
 
 ## Things I Learned
 
 - How to write a simple Makefile
 - How to organize header files
 - Array sizing and size\_t
+- Using libcheck
+- Adding dependencies on headers to Makefile
+- Function declaration order matters if a function is not in the header
+- The `realloc` call for resizing a variable
