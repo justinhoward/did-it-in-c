@@ -1,9 +1,13 @@
+#include <stdlib.h>
 #include "hello_world.h"
 #include "looping.h"
+#include "array.h"
 
 int main()
 {
   hello_world();
   looping();
-  return 0;
+  array();
+
+  return EXIT_SUCCESS;
 }

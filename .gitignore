@@ -1,2 +1,6 @@
 /obj/
 /bin/
+/tests/bin/
+compile_commands.json
+.tags
+.ccls-cache
