@@ -3,12 +3,24 @@
 #include <check.h>
 #include "did_it_in_c/array.h"
 
+START_TEST(construct_with_new) {
+  Array *array = array_new(5);
+  array_set(array, 1, 11);
+  ck_assert_int_eq(array->values[1], 11);
+  ck_assert_int_eq(array->size, 5);
+  ck_assert_int_eq(array->used, 2);
+  array_free(array);
+  free(array);
+}
+END_TEST
+
 START_TEST(is_initializable) {
   Array array;
   array_init(&array, 5);
 
   ck_assert_int_eq(array.size, 5);
   ck_assert_int_eq(array.used, 0);
+  array_free(&array);
 }
 END_TEST
 
@@ -23,6 +35,8 @@ START_TEST(inserts_values_at_beginning) {
   ck_assert_int_eq(array.values[1], 4);
   ck_assert_int_eq(array.values[2], 2);
   ck_assert_int_eq(array.used, 3);
+
+  array_free(&array);
 }
 END_TEST
 
@@ -35,6 +49,8 @@ START_TEST(fit_doubles_size) {
   ck_assert_int_eq(array.size, 8);
   ck_assert_int_eq(array.used, 1);
   ck_assert_int_eq(array.values[0], 0);
+
+  array_free(&array);
 }
 END_TEST
 
@@ -47,6 +63,8 @@ START_TEST(expands_to_fit_insert) {
   ck_assert_int_ge(array.size, 2);
   ck_assert_int_eq(array.values[0], 2);
   ck_assert_int_eq(array.used, 2);
+
+  array_free(&array);
 }
 END_TEST
 
@@ -60,6 +78,8 @@ START_TEST(inserts_values) {
   ck_assert_int_eq(array.values[0], 10);
   ck_assert_int_eq(array.values[1], 11);
   ck_assert_int_eq(array.used, 2);
+
+  array_free(&array);
 }
 END_TEST
 
@@ -75,6 +95,8 @@ START_TEST(sets_value_at_index) {
   ck_assert_int_eq(array.values[5], 15);
   ck_assert_int_eq(array.values[11], 21);
   ck_assert_int_eq(array.used, 12);
+
+  array_free(&array);
 }
 END_TEST
 
@@ -86,6 +108,7 @@ Suite *make_array_suite(void) {
   tc_core = tcase_create("Core");
   suite_add_tcase(suite, tc_core);
 
+  tcase_add_test(tc_core, construct_with_new);
   tcase_add_test(tc_core, is_initializable);
   tcase_add_test(tc_core, inserts_values_at_beginning);
   tcase_add_test(tc_core, fit_doubles_size);

@@ -9,6 +9,7 @@ typedef struct {
   size_t size;
 } Array;
 
+Array *array_new(size_t size);
 void array_init(Array *array, size_t size);
 void array_fit(Array *array, size_t size);
 void array_insert(Array *array, size_t index, int element);
