@@ -1,5 +1,5 @@
-#ifndef ARRAY_H
-#define ARRAY_H
+#ifndef INCLUDE_DID_IT_IN_C_ARRAY_H_
+#define INCLUDE_DID_IT_IN_C_ARRAY_H_
 
 #include <stdlib.h>
 
@@ -12,7 +12,8 @@ typedef struct {
 void array_init(Array *array, size_t size);
 void array_fit(Array *array, size_t size);
 void array_insert(Array *array, size_t index, int element);
+void array_set(Array *array, size_t index, int element);
 void array_free(Array *array);
 void array();
 
-#endif
+#endif  // INCLUDE_DID_IT_IN_C_ARRAY_H_

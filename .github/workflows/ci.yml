@@ -1,0 +1,19 @@
+---
+name: CI
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: ['**']
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - run: sudo apt-get install -y check
+      - run: pip install cpplint
+      - run: make lint
+      - run: make test

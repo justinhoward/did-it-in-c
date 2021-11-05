@@ -1,10 +1,9 @@
 #include <stdlib.h>
-#include "hello_world.h"
-#include "looping.h"
-#include "array.h"
+#include "did_it_in_c/hello_world.h"
+#include "did_it_in_c/looping.h"
+#include "did_it_in_c//array.h"
 
-int main()
-{
+int main() {
   hello_world();
   looping();
   array();

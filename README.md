@@ -23,6 +23,13 @@ this will serve as a record of all my mistakes and progress.
 - Function declaration order matters if a function is not in the header
 - The `realloc` call for resizing a variable
 
+## Build Dependencies
+
+- `clang`
+- `make`
+- `check` [libcheck](https://libcheck.github.io/check/)
+- `cpplint` [cpplint](https://github.com/cpplint/cpplint)
+
 ## Running
 
 To run the examples:
@@ -45,4 +52,11 @@ To setup the CCLS language server:
 - Install [`bear`](https://github.com/rizsotto/Bear)
 - Install [`ccls`](https://github.com/MaskRay/ccls)
 - Clean with `make clean`
-- Run `bear -- make` to generate `compile_commands.json`
+
+Generate `compile_commands.json`:
+
+```sh
+make clean
+bear -- make
+bear --append make test
+```

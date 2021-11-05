@@ -40,7 +40,7 @@ $(TARGETFILE): $(OBJECTS)
 # Compile
 $(OBJDIR)/%.$(OBJEXT): $(SRCDIR)/%.$(SRCEXT) $(INCLUDES)
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
+	$(CC) $(INC) -c -o $@ $< $(CFLAGS)
 
 # Remove all generated files
 clean:
@@ -49,10 +49,13 @@ clean:
 test: $(TESTTARGETS)
 	@for test in $^; do "$$test"; done
 
+lint: $(SOURCES) $(INCLUDES)
+	cpplint $(SOURCES) $(INCLUDES) $(TESTS)
+
 # Compile test
 $(TESTTARGETDIR)/%: $(TESTDIR)/%.$(SRCEXT) $(OBJECTS)
 	@mkdir -p $(dir $@)
-	$(CC) $(TESTCFLAGS) $(INC) -o $@ $< $(filter-out $(MAINOBJ), $(OBJECTS))
+	$(CC) $(INC) -o $@ $< $(filter-out $(MAINOBJ), $(OBJECTS)) $(TESTCFLAGS)
 
 # Prevent make from treating these targets as files
-.PHONY: all clean test
+.PHONY: all clean test lint
