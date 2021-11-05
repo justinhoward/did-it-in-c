@@ -2,7 +2,7 @@
 #include "did_it_in_c/looping.h"
 #include "did_it_in_c/macros.h"
 
-void looping() {
+void looping(void) {
   int nums[] = {1, 1, 2, 3, 5, 8};
 
   // The above ARRAY_SIZE macro uses sizeof. The sizeof function returns a

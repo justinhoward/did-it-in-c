@@ -78,7 +78,7 @@ START_TEST(sets_value_at_index) {
 }
 END_TEST
 
-Suite *make_array_suite() {
+Suite *make_array_suite(void) {
   Suite *suite;
   TCase *tc_core;
 

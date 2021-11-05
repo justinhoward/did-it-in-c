@@ -42,14 +42,14 @@ void array_free(Array *array) {
 void array() {
   Array a;
   array_init(&a, 10);
-  for (unsigned int i = 0; i < a.size; ++i) {
-    array_set(&a, i, i);
+  for (size_t i = 0; i < a.size; ++i) {
+    array_set(&a, i, (int) i);
   }
   array_fit(&a, 20);
-  for (unsigned int i = 10; i < a.size; ++i) {
-    array_insert(&a, i, i);
+  for (size_t i = 10; i < a.size; ++i) {
+    array_insert(&a, i, (int) i);
   }
-  for (unsigned int i = 0; i < a.size; ++i) {
+  for (size_t i = 0; i < a.size; ++i) {
     printf("%u ", a.values[i]);
   }
   array_free(&a);

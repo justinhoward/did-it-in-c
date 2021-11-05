@@ -16,7 +16,7 @@ INCEXT=h
 
 # Compiler and linker
 CC=clang
-CFLAGS=-Wall -Wextra
+CFLAGS=-Wall -Wextra -Werror
 TESTCFLAGS=$(CFLAGS) $(shell pkg-config --cflags --libs check)
 INC=-iquote $(INCDIR)
 
