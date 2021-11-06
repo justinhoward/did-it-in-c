@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
-      - run: sudo apt-get install -y check
-      - run: pip install cpplint
+      - run: sudo apt-get install -y check cppcheck
+      - run: pip install cpplint flawfinder
       - run: make lint
       - run: make test

@@ -1,29 +1,21 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "did_it_in_c/array.h"
+#include "did_it_in_c/error.h"
 
 Array *array_new(size_t size) {
   Array *array = malloc(sizeof(*array));
-  if (!array) {
-    perror("Failed to allocate array");
-    exit(EXIT_FAILURE);
-  }
+  if (!array) FATAL_ERR("Failed to allocate array");
 
   array_init(array, size);
   return array;
 }
 
 void array_init(Array *array, size_t size) {
-  if (size == 0) {
-    perror("Array size must be > 0");
-    exit(EXIT_FAILURE);
-  }
+  if (size == 0) FATAL_ERR("Array size must be > 0");
 
   array->values = (int *) malloc(size * sizeof(int));
-  if (!array->values) {
-    perror("Failed to allocate array values");
-    exit(EXIT_FAILURE);
-  }
+  if (!array->values) FATAL_ERR("Failed to allocate array");
 
   array->used = 0;
   array->size = size;
@@ -36,10 +28,7 @@ void array_fit(Array *array, size_t size) {
 
   while (array->size < size) array->size *= 2;
   array->values = (int *) realloc(array->values, array->size * sizeof(int));
-  if (!array->values) {
-    perror("Failed to allocate array values");
-    exit(EXIT_FAILURE);
-  }
+  if (!array->values) perror("Failed to allocate array values");
 }
 
 void array_insert(Array *array, size_t position, int element) {
@@ -64,19 +53,21 @@ void array_free(Array *array) {
   array->size = 0;
 }
 
-void array() {
-  Array a;
-  array_init(&a, 10);
-  for (size_t i = 0; i < a.size; ++i) {
-    array_set(&a, i, (int) i);
+void array_example() {
+  Array *a = array_new(10);
+  array_init(a, 10);
+  for (size_t i = 0; i < a->size; ++i) {
+    array_set(a, i, (int) i);
   }
-  array_fit(&a, 20);
-  for (size_t i = 10; i < a.size; ++i) {
-    array_insert(&a, i, (int) i);
+  array_fit(a, 20);
+  for (size_t i = 10; i < a->size; ++i) {
+    array_insert(a, i, (int) i);
   }
-  for (size_t i = 0; i < a.size; ++i) {
-    printf("%u ", a.values[i]);
+  for (size_t i = 0; i < a->size; ++i) {
+    printf("%i ", a->values[i]);
   }
-  array_free(&a);
   printf("\n");
+
+  array_free(a);
+  free(a);
 }

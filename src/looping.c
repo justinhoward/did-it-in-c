@@ -13,7 +13,7 @@ void looping(void) {
     // option would be to declare i as a size_t type integer and use %zd to
     // specifically expect a size_t integer, but the z modifier is not supported
     // by all compilers.
-    printf("%u ", nums[i]);
+    printf("%i ", nums[i]);
   }
   printf("\n");
 }

@@ -6,7 +6,7 @@
 int main() {
   hello_world();
   looping();
-  array();
+  array_example();
 
   return EXIT_SUCCESS;
 }
